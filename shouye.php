@@ -14,7 +14,6 @@
   <!--[if lt IE 9]>
   <script src="js/html5shiv.min.js"></script>
   <script src="js/respond.min.js"></script>
-  <script src="js/index.js"></script>
   <![endif]-->
 </head>
 <body class="bg-primary">
@@ -83,7 +82,7 @@
       </select>
     </div>
     <div class="col-md-8 col-sm-12">
-      <input type="text" name="" id="result">
+      <input type="text" name="" id="result" style="color:black">
     </div>
   </div>
   <div class="row" id="foot">
@@ -111,5 +110,6 @@
 
 <script src="js/jquery-1.11.3.js"></script>
 <script src="js/bootstrap.min.js"></script>
+<script src="js/index.js"></script>
 </body>
 </html>
