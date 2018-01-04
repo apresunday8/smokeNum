@@ -1,0 +1,129 @@
+<!Doctype html>
+<meta charset="utf-8">
+<title></title>
+<head>
+  <link rel="stylesheet" type="text/css" href="css/index.css">
+  <style>
+    /* 弹窗 (background) */
+    .modal {
+      display: none; /* 默认隐藏 */
+      position: fixed;/*固对定位*/
+      z-index: 1;/*属性设置元素的堆叠顺序。拥有更高堆叠顺序的元素总是会处于堆叠顺序较低的元素的前面*/
+      padding-top: 30px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgb(0,0,0);
+      background-color: rgba(0,0,0,0.4);
+    }
+    /* 弹窗内容 */
+    .modal-content {
+      position: relative;
+      background-color: #fefefe;
+      margin: auto;
+      padding: 0;
+      border: 1px solid #888;
+      width: 35%;
+      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+      -webkit-animation-name: animatetop;
+      -webkit-animation-duration: 0.4s;
+      animation-name: animatetop;
+      animation-duration: 0.4s
+    }
+    /* 添加动画 */
+    @-webkit-keyframes animatetop {
+      from {top:-300px; opacity:0}
+      to {top:0; opacity:1}
+    }
+    @keyframes animatetop {
+      from {top:-300PX; opacity:0}
+      to {top:0; opacity:1}
+    }
+    /* 关闭按钮 */
+    .close {
+      color: white;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      margin-top: -2%;
+    }
+    .close:hover,
+    .close:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;/*光标呈现为指示链接的指针（一只手）*/
+    }
+    .modal-header {
+      padding:10px 16px;
+      background-color: #5587A2;
+      color: white;
+    }
+    .modal-body {padding: 2px 16px;}
+    .modal-footer {
+      padding: 2px 16px;
+      background-color: #5587A2;
+      text-align: right;
+      color: white;
+    }
+    #myBtn{
+      position: absolute;
+      top: 17.5%;
+      left:35%;
+    }
+  </style>
+</head>
+<body>
+<!-- 打开弹窗按钮 -->
+<button id="myBtn" class="btn">上传说明</button>
+<!-- 弹窗 -->
+<div id="myModal" class="modal">
+  <!-- 弹窗内容 -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h4 style="text-align: center">上传说明</h4>
+    </div>
+    <div class="modal-body">
+      <div>
+        <h5>1.上传格式如图所示:</h5>
+        <img src="img/格式.png">
+      </div>
+      <h5>2.上传文件必须小于5M;</h5>
+      <h5>3.上传文件格式要求文.xls或者.xlsx格式;</h5>
+      <h5>4.学号限制不超过10位，姓名限制不超过10位;</h5>
+      <div>
+        <h5>5.上传文件的数据必须连续，不得有空数据。以下格式不可上传:</h5>
+        <div>
+          <img src="img/格式限制1.png">
+          <img src="img/格式限制2.png">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+ // 获取弹窗
+ var modal = document.getElementById('myModal');
+ // 打开弹窗的按钮对象
+ var btnB = document.getElementById("myBtn");
+ // 获取 <span> 元素，用于关闭弹窗 that closes the modal
+ var span = document.getElementsByClassName("close")[0];
+ // 点击按钮打开弹窗
+ btnB.onclick = function() {
+  modal.style.display = "block";
+ }
+ // 点击 <span> (x), 关闭弹窗
+ span.onclick = function() {
+  modal.style.display = "none";
+ }
+ // 在用户点击其他地方时，关闭弹窗
+ window.onclick = function(event) {
+  if (event.target == modal) {
+   modal.style.display = "none";
+  }
+ }
+</script>
+</body>
+</html>

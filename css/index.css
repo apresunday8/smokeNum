@@ -1,0 +1,92 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+body{
+	background-color: #6495ED;
+}
+h1{
+	margin-top: 2.3%;
+	font-family: "楷体";
+	color: gold;
+	text-align: center;
+	font-size: 50px;
+}
+span{
+	font-size: 20px;
+	font-weight: bold;
+}
+#file{
+	margin: 1.5%;
+	margin-left: 1.2%;
+}
+.btn{
+	width: 6.5%;
+	height: 5%;
+	background-color: pink;
+	border-radius: 8px;
+	outline: none;     /*取消input按后出现的蓝框*/
+}
+#container{
+	width: 85%;
+	height: 50%;
+	margin: 0 auto;
+	background-color: #B0C4DE;
+	box-shadow: 9px 9px 5px #888888;
+	border-radius: 15px;
+}
+#files{
+	height: 17%;
+	width: 13%;
+	position:relative;
+	top: 106px;
+	border-radius: 20px;
+	outline: none;
+	border:1px solid black;
+	left:10%;
+	display: inline-block;
+}
+#result{
+	position: relative;
+	width: 60%;
+	height: 16.7%;
+	border:2px dotted black;
+	top:55px;
+	left: 30%;
+	display: block;
+}
+#foot{
+	width: 60%;
+	position: relative;
+	bottom: 80px;
+	left: 35%;
+}
+.foot_btn{
+	width: 150px;
+	height: 50px;
+	margin-left: 20px;
+	font-size: 15px;
+	font-weight: bold;
+	border-radius: 7px;
+	outline: none;
+	background-color: #77F;
+	box-shadow: 5px 5px 2px #888;
+}
+input[disabled]       /* 设置按钮为不可按后按钮的样式*/
+{
+	color:#D8BFD8;
+	opacity:1
+}
+.foot{
+    height:150px;
+    width:100%;
+    margin-top:-2.6%;
+}
+.text{
+    text-align:center;
+    font-size:14px;
+    color:#8B4513;
+}
+.text_div{
+    padding-top:2%;
+}
