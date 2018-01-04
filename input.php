@@ -2,7 +2,8 @@
 //包含连接Mysql数据库文件
 include "chooseFile.php";
 //构建查询sql语句
-$sql = @"SELECT * FROM student1";
+$table = 'student4';
+$sql = @"SELECT * FROM $table";
 $result = mysql_query($sql);            //执行SQL语句
 if ($result) {                         //判断查询结果有没有数据
 	while ($arr = mysql_fetch_assoc($result)) {

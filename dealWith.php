@@ -8,10 +8,9 @@ if (empty($_FILES['file']['name'])) {
 }
 $fileName = $_FILES['file']['name'];     //获取文件名称
 
-$QfileName = substr($fileName,0,strrpos($fileName, '.'));         //获取去电文件后缀后的文件名
+$QfileName = substr($fileName,0,strrpos($fileName, '.'));         //获取去掉文件后缀后的文件名
 //构建SQL语句
-$sql = "INSERT INTO dataname VALUES(null,'$QfileName')";
-mysql_query($sql);
+
 //检测文件格式
     $filePath = pathinfo($fileName);              //获取文件扩展的相关信息输出结果为一个数据类型
     $fileFromat = $filePath['extension'];         //获取文件后缀名(pathinfo返回值的'extension'为文件扩展名
@@ -19,13 +18,10 @@ mysql_query($sql);
 $fileSize = $_FILES['file']['size'];
 if ($fileSize>5*1024*1024) {
 	echo "<script>alert('上传失败你选择的excel文件超过了5M,请重新上传！');history.go(-1)</script>";
-	$sql = "DELETE FROM dataname WHERE fileName='$QfileName'";
-	mysql_query($sql);
+    exit();
 }
 //限制文件上传格式
 if($fileFromat!='xlsx'&&$fileFromat!='xls'){
-    $sql = "DELETE FROM dataname WHERE fileName='$QfileName'";
-    mysql_query($sql);
 	echo "<script>alert('格式错误，请上传excel文件格式为.xls或.xlsx！');history.go(-1)</script>";
 	exit();
 }
@@ -50,11 +46,11 @@ if(is_uploaded_file($fileTemName)){           //判断文件是否成功上传
 		//判断上传的表格中是否有数据
 		if (empty($a)||empty($b)) {
 			echo "<script>alert('请检查你上传的文件，文件内数据不完整，请检查！');location.href='shouye.php'</script>";
-            $sql = "DELETE FROM dataname WHERE fileName='$QfileName'";
-            mysql_query($sql);
 			exit();
 		}
 }
+    $sql = "INSERT INTO dataname VALUES(null,'$QfileName')";
+    mysql_query($sql);
 //动态创建数据表，独立文件之间是一个数据表
 //动态构建要创建的数据表名称
 	$sql = "SELECT * FROM dataname";
