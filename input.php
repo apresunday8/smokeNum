@@ -2,7 +2,7 @@
 //包含连接Mysql数据库文件
 include "chooseFile.php";
 //构建查询sql语句
-$table = 'student4';
+$table='student1';
 $sql = @"SELECT * FROM $table";
 $result = mysql_query($sql);            //执行SQL语句
 if ($result) {                         //判断查询结果有没有数据
@@ -14,12 +14,13 @@ if ($result) {                         //判断查询结果有没有数据
 <script>
     var t;
     var i=0;
-    var count=0;
+    var count=0;         //记录按键的次数
+
+ //前台抽号动画方法
+function start(){
     //将PHP读取的数据库数据转换为js数据，以便前端部分操作
     var jsdata = new Array();
     jsdata = <?php echo json_encode($data)?>;       //json_encode对数据进行json编码
- //前台抽号动画方法
-function start(){
 	document.getElementById('result').value=jsdata[i]['stuNum']+'                         '+jsdata[i]['stuName'];
 	document.getElementById('result').style.fontSize = '22px';
 	document.getElementById('result').style.textAlign='center';

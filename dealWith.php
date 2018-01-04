@@ -9,7 +9,6 @@ if (empty($_FILES['file']['name'])) {
 $fileName = $_FILES['file']['name'];     //获取文件名称
 
 $QfileName = substr($fileName,0,strrpos($fileName, '.'));         //获取去掉文件后缀后的文件名
-//构建SQL语句
 
 //检测文件格式
     $filePath = pathinfo($fileName);              //获取文件扩展的相关信息输出结果为一个数据类型
@@ -49,6 +48,7 @@ if(is_uploaded_file($fileTemName)){           //判断文件是否成功上传
 			exit();
 		}
 }
+    //构建SQL语句并执行
     $sql = "INSERT INTO dataname VALUES(null,'$QfileName')";
     mysql_query($sql);
 //动态创建数据表，独立文件之间是一个数据表

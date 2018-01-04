@@ -9,12 +9,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
   <title></title>
   <link href="css/bootstrap.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/bootstrap.min.css">
   <link href="css/style.css" rel="stylesheet">
   <!--[if lt IE 9]>
   <script src="js/html5shiv.min.js"></script>
   <script src="js/respond.min.js"></script>
   <![endif]-->
+  <script>
+      function submitForm() {
+          var form = document.getElementById("chooseTable");
+          form.submit();      //js提交form表单
+      }
+  </script>
 </head>
 <body class="bg-primary">
 <div><p class="text-center text-success title">在线抽奖平台</p></div>
@@ -70,7 +75,9 @@
 <div class="container uploaded" id="foot1">
   <div class="row">
     <div class="col-md-2 col-md-offset-1 col-sm-12">
-      <select name="files" id="files" style="color: black;">
+      <form id="chooseTable" method="get" action="input.php" onsubmit="return false" target="submitFrame">
+      <input type="hidden" name="check" value="thisInput">
+      <select name="files" id="files" style="color: black;" onchange="submitForm()">
         <option value="0">请选择上传过的文件</option>
         <?php
 					$sql = "SELECT * FROM dataname";
@@ -80,6 +87,8 @@
         <option value="<?php echo $arr['id']?>"><?php echo $arr['fileName'] ?></option>
         <?php } ?>
       </select>
+      </form>
+      <iframe style="display: none;width:0px;height:0px" name="submitFrame"></iframe>
     </div>
     <div class="col-md-8 col-sm-12">
       <input type="text" name="" id="result" style="color:black">
