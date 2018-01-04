@@ -19,9 +19,13 @@ mysql_query($sql);
 $fileSize = $_FILES['file']['size'];
 if ($fileSize>5*1024*1024) {
 	echo "<script>alert('上传失败你选择的excel文件超过了5M,请重新上传！');history.go(-1)</script>";
+	$sql = "DELETE FROM dataname WHERE fileName='$QfileName'";
+	mysql_query($sql);
 }
 //限制文件上传格式
 if($fileFromat!='xlsx'&&$fileFromat!='xls'){
+    $sql = "DELETE FROM dataname WHERE fileName='$QfileName'";
+    mysql_query($sql);
 	echo "<script>alert('格式错误，请上传excel文件格式为.xls或.xlsx！');history.go(-1)</script>";
 	exit();
 }
@@ -46,6 +50,8 @@ if(is_uploaded_file($fileTemName)){           //判断文件是否成功上传
 		//判断上传的表格中是否有数据
 		if (empty($a)||empty($b)) {
 			echo "<script>alert('请检查你上传的文件，文件内数据不完整，请检查！');location.href='shouye.php'</script>";
+            $sql = "DELETE FROM dataname WHERE fileName='$QfileName'";
+            mysql_query($sql);
 			exit();
 		}
 }
